@@ -2,6 +2,7 @@ namespace Models;
 
 public class VideoFileData
 {
+    public int No { get; set; }
     public string Name { get; set; }
     public string Tracks { get; set; }
     public string TimeCodeIn { get; set; }

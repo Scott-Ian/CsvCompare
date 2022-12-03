@@ -98,7 +98,7 @@ Console.WriteLine("Outputing new file!");
 StringBuilder sb = new StringBuilder();
 foreach(VideoFileData entry in OutputData)
 {
-    string rowToWrite = $"{entry.Name},{entry.Tracks},{entry.TimeCodeIn},{entry.TimeCodeOut},";
+    string rowToWrite = $"{entry.No},{entry.Name},{entry.Tracks},{entry.TimeCodeIn},{entry.TimeCodeOut},";
     rowToWrite+= $"{entry.Tape},{entry.Start},{entry.End},{entry.Channels}";
 
     sb.AppendLine(rowToWrite);

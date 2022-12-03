@@ -26,15 +26,16 @@ public static class CsvReader
 
             string[] columns = newLine.Split(',');
             
-            newData.Name = columns[0];
-            newData.Tracks = columns[1];
-            newData.TimeCodeIn = columns[2];
+            newData.No = Int.ToString(columns[0]);
+            newData.Name = columns[1];
+            newData.Tracks = columns[2];
+            newData.TimeCodeIn = columns[3];
 
-            newData.TimeCodeOut = columns[3];
-            newData.Tape = columns[4];
-            newData.Start = columns[5];
-            newData.End = columns[6];
-            newData.Channels = columns[7];
+            newData.TimeCodeOut = columns[4];
+            newData.Tape = columns[5];
+            newData.Start = columns[6];
+            newData.End = columns[7];
+            newData.Channels = columns[8];
 
             videoData.Add(newData);
         }
