@@ -66,7 +66,8 @@ foreach(VideoFileData entry in BravoData)
 
     BStartTimes.Add(baseName, startTime);
     BEndTimes.Add(baseName, endTime);
-    BFileType.Add(baseName, $".{splitName[1]}");
+
+    if (splitName.Count >= 1) BFileType.Add(baseName, $".{splitName[1]}");
 }
 
 foreach(VideoFileData entry in AlphaData)
