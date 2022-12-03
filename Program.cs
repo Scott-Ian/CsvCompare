@@ -64,10 +64,10 @@ foreach(VideoFileData entry in BravoData)
     string startTime = entry.Start;
     string endTime = entry.End;
 
-    BStartTimes.Add(baseName, startTime);
-    BEndTimes.Add(baseName, endTime);
+    if (BStartTimes.ContainsKey(baseName) == false) BStartTimes.Add(baseName, startTime);
+    if (BEndTimes.ContainsKey(baseName) == false) BEndTimes.Add(baseName, endTime);
 
-    if (splitName.Count >= 1) BFileType.Add(baseName, $".{splitName[1]}");
+    if (splitName.Length >= 1 && BEndTimes.ContainsKey(baseName) == false) BFileType.Add(baseName, $".{splitName[1]}");
 }
 
 foreach(VideoFileData entry in AlphaData)
