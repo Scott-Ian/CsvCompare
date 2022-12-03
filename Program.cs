@@ -70,6 +70,9 @@ foreach(VideoFileData entry in BravoData)
     if (splitName.Length >= 1 && BEndTimes.ContainsKey(baseName) == false) BFileType.Add(baseName, $".{splitName[1]}");
 }
 
+int StartTimeReplaces = 0;
+int EndTimeReplaces = 0;
+int FileTypeReplaces = 0;
 foreach(VideoFileData entry in AlphaData)
 {
     string[] splitName = entry.Name.Split('.');
@@ -78,16 +81,19 @@ foreach(VideoFileData entry in AlphaData)
     if (BStartTimes.ContainsKey(baseName))
     {
         entry.Start = BStartTimes.GetValueOrDefault(baseName);
+        StartTimeReplaces++;
     }
 
     if (BEndTimes.ContainsKey(baseName))
     {
         entry.End = BEndTimes.GetValueOrDefault(baseName);
+        EndTimeReplaces++;
     }
 
     if (BFileType.ContainsKey(baseName))
     {
         entry.Name = baseName + BFileType.GetValueOrDefault(baseName);
+        FileTypeReplaces++;
     }
 
     OutputData.Add(entry);
@@ -106,7 +112,14 @@ foreach(VideoFileData entry in OutputData)
 }
 
 File.WriteAllText(OutputDirectory , sb.ToString());
-
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Records Created Count: " + OutputData.Count);
+Console.WriteLine("Start Time Replaces: " + StartTimeReplaces.ToString());
+Console.WriteLine("End Time Replaces: " + EndTimeReplaces.ToString());
+Console.WriteLine("File Type Replaces: " + FileTypeReplaces.ToString());
+Console.WriteLine();
+Console.WriteLine();
 AsciiArt.PraiseTheOmnissiah();
 
 
