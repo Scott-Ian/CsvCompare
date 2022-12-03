@@ -26,7 +26,7 @@ public static class CsvReader
 
             string[] columns = newLine.Split(',');
             
-            newData.No = Int.ToString(columns[0]);
+            newData.No = columns[0];
             newData.Name = columns[1];
             newData.Tracks = columns[2];
             newData.TimeCodeIn = columns[3];
