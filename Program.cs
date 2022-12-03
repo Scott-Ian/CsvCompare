@@ -56,6 +56,7 @@ Console.WriteLine("Entry Count for List B: " + BravoData.Count.ToString());
 Dictionary<string, string> BStartTimes = new Dictionary<string, string>();
 Dictionary<string, string> BEndTimes = new Dictionary<string, string>();
 Dictionary<string, string> BFileType = new Dictionary<string, string>();
+int DuplicateBListNames = 0;
 foreach(VideoFileData entry in BravoData)
 {
     string[] splitName = entry.Name.Split('.');
@@ -64,7 +65,11 @@ foreach(VideoFileData entry in BravoData)
     string startTime = entry.Start;
     string endTime = entry.End;
 
-    if (BStartTimes.ContainsKey(baseName) == false) BStartTimes.Add(baseName, startTime);
+    if (BStartTimes.ContainsKey(baseName) == false) 
+    {
+        BStartTimes.Add(baseName, startTime);
+        DuplicateBListNames++;
+    }
     if (BEndTimes.ContainsKey(baseName) == false) BEndTimes.Add(baseName, endTime);
 
     if (splitName.Length >= 1 && BEndTimes.ContainsKey(baseName) == false) BFileType.Add(baseName, $".{splitName[1]}");
@@ -118,6 +123,7 @@ Console.WriteLine("Records Created Count: " + OutputData.Count);
 Console.WriteLine("Start Time Replaces: " + StartTimeReplaces.ToString());
 Console.WriteLine("End Time Replaces: " + EndTimeReplaces.ToString());
 Console.WriteLine("File Type Replaces: " + FileTypeReplaces.ToString());
+Console.WriteLine("Duplicate B List Name Entries: " + DuplicateBListNames.ToString());
 Console.WriteLine();
 Console.WriteLine();
 AsciiArt.PraiseTheOmnissiah();
